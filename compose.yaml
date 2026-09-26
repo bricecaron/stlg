@@ -60,6 +60,7 @@ services:
     volumes:
       - wordpress_data:/var/www/html
       - ./src/themes/stlg:/var/www/html/wp-content/themes/stlg:ro
+      - ./tools:/var/www/html/wp-content/stlg-tools:ro
     networks:
       - backend
 

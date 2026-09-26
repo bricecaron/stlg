@@ -13,8 +13,8 @@ $quick_links = array(
     array('Disciplines', 'target', home_url('/disciplines/')),
     array('École de tir', 'users', home_url('/ecole-de-tir/')),
     array('Résultats', 'trophy', home_url('/actualites-resultats/')),
-    array('Horaires', 'calendar', home_url('/infos-pratiques/')),
-    array('Nous trouver', 'pin', home_url('/infos-pratiques/')),
+    array('Horaires', 'calendar', home_url('/infos-pratiques/#horaires')),
+    array('Nous trouver', 'pin', home_url('/infos-pratiques/#acces')),
 );
 ?>
 <main id="main-content">
@@ -113,10 +113,10 @@ $quick_links = array(
     <section class="practical" id="pratique" aria-labelledby="practical-title">
         <h2 id="practical-title" class="screen-reader-text">Informations pratiques</h2>
         <div class="practical__inner stlg-container">
-            <a href="<?php echo esc_url(home_url('/infos-pratiques/')); ?>"><?php echo stlg_icon('clock'); // phpcs:ignore ?><span><strong>Horaires</strong><small>Consulter les horaires →</small></span></a>
+            <a href="<?php echo esc_url(home_url('/infos-pratiques/#horaires')); ?>"><?php echo stlg_icon('clock'); // phpcs:ignore ?><span><strong>Horaires</strong><small>Consulter les horaires →</small></span></a>
             <a href="<?php echo esc_url(home_url('/contact/')); ?>"><?php echo stlg_icon('mail'); // phpcs:ignore ?><span><strong>Contact</strong><small>Une question ? →</small></span></a>
-            <a href="<?php echo esc_url(home_url('/infos-pratiques/')); ?>"><?php echo stlg_icon('pin'); // phpcs:ignore ?><span><strong>Nous trouver</strong><small>Parc des sports Alfred Vincent →</small></span></a>
-            <div class="map-placeholder" id="plan"><img src="<?php echo esc_url($theme_uri . '/assets/images/map-placeholder.svg'); ?>" alt="Plan schématique de Livry-Gargan" width="360" height="130"><a class="button button--blue" href="<?php echo esc_url(home_url('/infos-pratiques/')); ?>">Voir le plan <span aria-hidden="true">→</span></a></div>
+            <a href="<?php echo esc_url(home_url('/infos-pratiques/#acces')); ?>"><?php echo stlg_icon('pin'); // phpcs:ignore ?><span><strong>Nous trouver</strong><small>Parc des sports Alfred Vincent →</small></span></a>
+            <div class="map-placeholder" id="plan"><img src="<?php echo esc_url($theme_uri . '/assets/images/map-placeholder.svg'); ?>" alt="Plan schématique de Livry-Gargan" width="360" height="130"><a class="button button--blue" href="<?php echo esc_url(home_url('/infos-pratiques/#acces')); ?>">Voir le plan <span aria-hidden="true">→</span></a></div>
         </div>
     </section>
 </main>
