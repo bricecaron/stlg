@@ -9,12 +9,12 @@ get_header();
 
 $theme_uri = get_stylesheet_directory_uri();
 $quick_links = array(
-    array('Le club', 'target', '#club'),
-    array('Les disciplines', 'users', '#disciplines'),
-    array('Nos résultats', 'trophy', '#resultats'),
-    array('Ouvertures', 'calendar', '#pratique'),
-    array('Liens utiles', 'link', '#pratique'),
-    array("Plan d’accès", 'pin', '#plan'),
+    array('Le club', 'target', home_url('/le-club/')),
+    array('Disciplines', 'target', home_url('/disciplines/')),
+    array('École de tir', 'users', home_url('/ecole-de-tir/')),
+    array('Résultats', 'trophy', home_url('/actualites-resultats/')),
+    array('Horaires', 'calendar', home_url('/infos-pratiques/')),
+    array('Nous trouver', 'pin', home_url('/infos-pratiques/')),
 );
 ?>
 <main id="main-content">
@@ -45,7 +45,7 @@ $quick_links = array(
                 <span class="yellow-rule" aria-hidden="true"></span>
                 <h2>Le tir sportif<br>à Livry-Gargan</h2>
                 <p>Que vous soyez débutant ou tireur confirmé, le STLG vous accompagne dans la découverte et la progression du tir sportif, dans un cadre sécurisé, avec des installations adaptées.</p>
-                <a class="button" href="#disciplines">Découvrir le club <span aria-hidden="true">→</span></a>
+                <a class="button" href="<?php echo esc_url(home_url('/le-club/')); ?>">Découvrir le club <span aria-hidden="true">→</span></a>
             </div>
             <div class="intro__visual placeholder-visual" role="img" aria-label="Photographie du pas de tir à venir">
                 <img src="<?php echo esc_url($theme_uri . '/assets/images/range-placeholder.svg'); ?>" alt="" width="800" height="520">
@@ -70,7 +70,7 @@ $quick_links = array(
         <div class="stlg-container">
             <div class="section-heading section-heading--row">
                 <div><h2>Actualités &amp; résultats</h2><span class="yellow-rule" aria-hidden="true"></span></div>
-                <a class="text-link" href="<?php echo esc_url(get_category_link(get_cat_ID('Résultats'))); ?>">Voir tous les résultats <span aria-hidden="true">→</span></a>
+                <a class="text-link" href="<?php echo esc_url(home_url('/actualites-resultats/')); ?>">Voir tous les résultats <span aria-hidden="true">→</span></a>
             </div>
             <div class="card-grid">
                 <?php
@@ -113,10 +113,10 @@ $quick_links = array(
     <section class="practical" id="pratique" aria-labelledby="practical-title">
         <h2 id="practical-title" class="screen-reader-text">Informations pratiques</h2>
         <div class="practical__inner stlg-container">
-            <a href="#pratique"><?php echo stlg_icon('clock'); // phpcs:ignore ?><span><strong>Horaires</strong><small>Consulter les horaires →</small></span></a>
-            <a href="#contact"><?php echo stlg_icon('mail'); // phpcs:ignore ?><span><strong>Contact</strong><small>Une question ? →</small></span></a>
-            <a href="#plan"><?php echo stlg_icon('pin'); // phpcs:ignore ?><span><strong>Nous trouver</strong><small>Parc des sports Alfred Vincent →</small></span></a>
-            <div class="map-placeholder" id="plan"><img src="<?php echo esc_url($theme_uri . '/assets/images/map-placeholder.svg'); ?>" alt="Plan schématique de Livry-Gargan" width="360" height="130"><a class="button button--blue" href="#plan">Voir le plan <span aria-hidden="true">→</span></a></div>
+            <a href="<?php echo esc_url(home_url('/infos-pratiques/')); ?>"><?php echo stlg_icon('clock'); // phpcs:ignore ?><span><strong>Horaires</strong><small>Consulter les horaires →</small></span></a>
+            <a href="<?php echo esc_url(home_url('/contact/')); ?>"><?php echo stlg_icon('mail'); // phpcs:ignore ?><span><strong>Contact</strong><small>Une question ? →</small></span></a>
+            <a href="<?php echo esc_url(home_url('/infos-pratiques/')); ?>"><?php echo stlg_icon('pin'); // phpcs:ignore ?><span><strong>Nous trouver</strong><small>Parc des sports Alfred Vincent →</small></span></a>
+            <div class="map-placeholder" id="plan"><img src="<?php echo esc_url($theme_uri . '/assets/images/map-placeholder.svg'); ?>" alt="Plan schématique de Livry-Gargan" width="360" height="130"><a class="button button--blue" href="<?php echo esc_url(home_url('/infos-pratiques/')); ?>">Voir le plan <span aria-hidden="true">→</span></a></div>
         </div>
     </section>
 </main>

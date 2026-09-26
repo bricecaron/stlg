@@ -101,17 +101,17 @@ function stlg_icon(string $name): string
 function stlg_menu_fallback(): void
 {
     $items = array(
-        __('Informations', 'stlg')                    => '#club',
-        __('Liens utiles', 'stlg')                    => '#pratique',
-        __('Résultats de nos compétiteurs', 'stlg')   => '#resultats',
-        __('Contacts', 'stlg')                        => '#contact',
-        __('Ouvertures', 'stlg')                      => '#pratique',
-        __('Plan', 'stlg')                            => '#plan',
+        __('Le club', 'stlg')                 => '/le-club/',
+        __('Disciplines', 'stlg')              => '/disciplines/',
+        __('École de tir', 'stlg')             => '/ecole-de-tir/',
+        __('Actualités & résultats', 'stlg')   => '/actualites-resultats/',
+        __('Infos pratiques', 'stlg')          => '/infos-pratiques/',
+        __('Contact', 'stlg')                  => '/contact/',
     );
 
     echo '<ul class="stlg-menu">';
     foreach ($items as $label => $url) {
-        printf('<li><a href="%1$s">%2$s</a></li>', esc_url(home_url('/') . $url), esc_html($label));
+        printf('<li><a href="%1$s">%2$s</a></li>', esc_url(home_url($url)), esc_html($label));
     }
     echo '</ul>';
 }
