@@ -70,41 +70,32 @@ $quick_links = array(
         <div class="stlg-container">
             <div class="section-heading section-heading--row">
                 <div><h2>Actualités &amp; résultats</h2><span class="yellow-rule" aria-hidden="true"></span></div>
-                <a class="text-link" href="<?php echo esc_url(home_url('/actualites-resultats/')); ?>">Voir tous les résultats <span aria-hidden="true">→</span></a>
+                <a class="text-link" href="<?php echo esc_url(home_url('/actualites-resultats/')); ?>">Toutes les actualités &amp; résultats <span aria-hidden="true">→</span></a>
             </div>
             <div class="card-grid">
                 <?php
-                $results = new WP_Query(array('posts_per_page' => 3, 'category_name' => 'resultats', 'ignore_sticky_posts' => true));
-                if ($results->have_posts()) :
-                    while ($results->have_posts()) :
-                        $results->the_post();
+                $editorial_posts = new WP_Query(array(
+                    'post_type'           => 'post',
+                    'post_status'         => 'publish',
+                    'posts_per_page'      => 3,
+                    'category__in'        => stlg_editorial_category_ids(),
+                    'orderby'             => 'date',
+                    'order'               => 'DESC',
+                    'ignore_sticky_posts' => true,
+                ));
+                if ($editorial_posts->have_posts()) :
+                    while ($editorial_posts->have_posts()) :
+                        $editorial_posts->the_post();
                         ?>
-                        <article class="result-card">
-                            <a href="<?php the_permalink(); ?>">
-                                <div class="result-card__image">
-                                    <?php if (has_post_thumbnail()) : the_post_thumbnail('large'); else : ?>
-                                        <img src="<?php echo esc_url($theme_uri . '/assets/images/result-placeholder.svg'); ?>" alt="" width="640" height="360">
-                                    <?php endif; ?>
-                                </div>
-                                <div class="result-card__body"><p class="card-meta"><?php echo esc_html(get_the_date()); ?></p><h3><?php the_title(); ?></h3><p><?php echo esc_html(wp_trim_words(get_the_excerpt(), 12)); ?></p></div>
-                            </a>
-                        </article>
+                        <?php get_template_part('template-parts/editorial-card'); ?>
                         <?php
                     endwhile;
                     wp_reset_postdata();
                 else :
-                    $fallbacks = array(
-                        array('Résultats sportifs', 'Les prochains résultats seront publiés ici.'),
-                        array('Vie du club', 'Retrouvez bientôt les actualités du STLG.'),
-                        array('Compétitions', 'Suivez les compétiteurs de Livry-Gargan.'),
-                    );
-                    foreach ($fallbacks as $fallback) :
-                        ?>
-                        <article class="result-card result-card--placeholder">
-                            <div class="result-card__image"><img src="<?php echo esc_url($theme_uri . '/assets/images/result-placeholder.svg'); ?>" alt="" width="640" height="360"></div>
-                            <div class="result-card__body"><p class="card-meta">À venir</p><h3><?php echo esc_html($fallback[0]); ?></h3><p><?php echo esc_html($fallback[1]); ?></p></div>
-                        </article>
-                    <?php endforeach; ?>
+                    ?>
+                    <div class="editorial-empty editorial-empty--home">
+                        <p><?php esc_html_e('Les actualités et résultats du club seront publiés prochainement.', 'stlg'); ?></p>
+                    </div>
                 <?php endif; ?>
             </div>
         </div>

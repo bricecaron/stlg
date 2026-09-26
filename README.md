@@ -52,6 +52,17 @@ docker compose --profile tools run --rm cli wp rewrite flush
 
 Les pages utilisent alors des URLs lisibles telles que `/informations/`, `/contacts/` et `/plan/`. La page `Accueil` reste accessible à la racine `/` grâce à `front-page.php`.
 
+## Contenus STLG
+
+Les migrations de contenu rejouables sont accessibles au service WP-CLI :
+
+```console
+docker compose --profile tools run --rm cli wp eval-file wp-content/stlg-tools/migrate-lot-3a.php
+docker compose --profile tools run --rm cli wp eval-file wp-content/stlg-tools/seed-lot-3b.php
+```
+
+La seconde commande crée les catégories natives `Actualités` et `Résultats` ainsi que deux publications de démonstration clairement identifiées. Pour publier ensuite un contenu réel, utilisez simplement **Articles > Ajouter**, rédigez l’article, choisissez l’une de ces deux catégories puis publiez. L’image mise en avant reste facultative.
+
 Arrêtez l’environnement sans supprimer les données :
 
 ```console

@@ -115,3 +115,30 @@ function stlg_menu_fallback(): void
     }
     echo '</ul>';
 }
+
+/** @return int[] IDs of the native editorial categories. */
+function stlg_editorial_category_ids(): array
+{
+    $ids = array();
+    foreach (array('actualites', 'resultats') as $slug) {
+        $category = get_category_by_slug($slug);
+        if ($category) {
+            $ids[] = (int) $category->term_id;
+        }
+    }
+    return $ids;
+}
+
+/** Return the first relevant editorial category assigned to a post. */
+function stlg_get_editorial_category(int $post_id = 0): ?WP_Term
+{
+    $terms = get_the_category($post_id ?: (int) get_the_ID());
+    foreach (array('actualites', 'resultats') as $slug) {
+        foreach ($terms as $term) {
+            if ($slug === $term->slug) {
+                return $term;
+            }
+        }
+    }
+    return null;
+}

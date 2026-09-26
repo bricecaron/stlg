@@ -89,6 +89,16 @@ h1, h2, h3 { line-height: 1.12; }
 .card-meta { margin-bottom: 5px; color: #70849a; font-size: 12px; }
 .result-card h3 { margin-bottom: 6px; font-size: 18px; }
 .result-card__body > p:last-child { margin: 0; color: var(--stlg-muted); font-size: 14px; }
+.result-card__image--empty { display: grid; place-items: center; background: linear-gradient(135deg, #dcebf6, #eef6fb); }
+.editorial-card__monogram { color: rgb(18 56 93 / 22%); font-size: clamp(38px, 6vw, 72px); font-weight: 800; letter-spacing: .12em; }
+.editorial-card__meta, .single-editorial__meta { display: flex; align-items: center; gap: 10px; color: var(--stlg-muted); font-size: 12px; }
+.editorial-badge { display: inline-flex; padding: 4px 9px; border-radius: 999px; color: var(--stlg-blue-dark); background: #dcebf6; font-size: 11px; font-weight: 750; letter-spacing: .04em; text-transform: uppercase; }
+.editorial-badge--resultats { background: #fff3a8; }
+.editorial-card h3 { margin-top: 12px; }
+.editorial-empty { max-width: none; margin-top: 30px; padding: 34px; border-left: 4px solid var(--stlg-yellow); background: var(--stlg-background); }
+.editorial-empty h2 { margin-bottom: 8px; font-size: 25px; }
+.editorial-empty p:last-child { margin-bottom: 0; color: var(--stlg-muted); }
+.editorial-empty--home { grid-column: 1 / -1; margin-top: 0; }
 
 .practical { padding: 36px 0; background: #eaf3fa; }
 .practical__inner { display: grid; grid-template-columns: 1fr 1fr 1.15fr 1.9fr; align-items: center; }
@@ -113,6 +123,7 @@ h1, h2, h3 { line-height: 1.12; }
 .internal-main { min-height: 56vh; padding: clamp(64px, 8vw, 110px) 0; background: var(--stlg-background); }
 .content-shell { max-width: 900px; padding: clamp(28px, 5vw, 64px); background: var(--stlg-white); box-shadow: 0 8px 28px rgb(18 56 93 / 7%); }
 .content-shell--centered { text-align: center; }
+.content-shell--wide { max-width: 1100px; }
 .internal-entry h1, .internal-heading h1, .content-shell--centered h1 { margin-bottom: 28px; font-size: clamp(34px, 5vw, 54px); letter-spacing: -.03em; }
 .entry-meta { margin-bottom: 10px; color: var(--stlg-muted); font-size: 14px; }
 .entry-content { color: var(--stlg-muted); }
@@ -153,6 +164,18 @@ h1, h2, h3 { line-height: 1.12; }
 .internal-card h2 { margin-bottom: 10px; font-size: clamp(23px, 3vw, 32px); }
 .internal-card p:last-child { margin-bottom: 0; color: var(--stlg-muted); }
 .navigation.pagination { margin-top: 36px; }
+.editorial-index__heading { margin-bottom: 36px; }
+.editorial-index__heading .eyebrow { margin-bottom: 10px; }
+.editorial-index__heading h1 { margin-bottom: 14px; }
+.editorial-index__heading > p:last-child { max-width: 60ch; margin-bottom: 0; color: var(--stlg-muted); font-size: 18px; }
+.editorial-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.editorial-pagination { margin-top: 40px; }
+.editorial-pagination .page-numbers { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.editorial-pagination a, .editorial-pagination span { display: grid; min-width: 42px; min-height: 42px; place-items: center; padding: 8px 12px; border: 1px solid var(--stlg-border); color: var(--stlg-blue-dark); background: var(--stlg-white); }
+.editorial-pagination .current { color: var(--stlg-white); background: var(--stlg-blue-dark); }
+.single-editorial__meta { margin-bottom: 14px; }
+.single-editorial__back { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--stlg-border); font-weight: 700; }
+.single-editorial__back a { color: #155b92; text-decoration: underline; text-underline-offset: 3px; }
 
 @media (min-width: 1200px) {
     .site-branding { left: max(24px, calc((100vw - var(--stlg-container)) / 2)); }
@@ -205,6 +228,7 @@ h1, h2, h3 { line-height: 1.12; }
     .discipline-grid article:nth-child(-n+2) { border-bottom: 1px solid var(--stlg-border); }
     .section-heading--row { align-items: flex-start; flex-direction: column; }
     .card-grid { grid-template-columns: 1fr; }
+    .editorial-grid { grid-template-columns: 1fr; }
     .practical__inner { grid-template-columns: 1fr; }
     .practical__inner > a { border-right: 0; border-bottom: 1px solid #cbdde9; }
     .map-placeholder { flex-direction: column; }
