@@ -35,6 +35,23 @@ docker compose up -d
 
 WordPress est disponible sur <http://localhost:8082>. Le port peut être modifié avec `WORDPRESS_PORT` dans `.env`.
 
+## Configuration WordPress initiale
+
+Après une nouvelle installation WordPress :
+
+1. créez une page publiée nommée `Accueil` avec le slug `accueil` ;
+2. dans **Réglages > Lecture**, choisissez une page d’accueil statique et sélectionnez `Accueil` ;
+3. dans **Réglages > Permaliens**, sélectionnez la structure **Titre de la publication** (`/%postname%/`) puis enregistrez.
+
+La même structure de permaliens peut être appliquée avec WP-CLI :
+
+```console
+docker compose --profile tools run --rm cli wp rewrite structure '/%postname%/'
+docker compose --profile tools run --rm cli wp rewrite flush
+```
+
+Les pages utilisent alors des URLs lisibles telles que `/informations/`, `/contacts/` et `/plan/`. La page `Accueil` reste accessible à la racine `/` grâce à `front-page.php`.
+
 Arrêtez l’environnement sans supprimer les données :
 
 ```console
