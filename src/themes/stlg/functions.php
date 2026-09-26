@@ -25,19 +25,37 @@ add_action('after_setup_theme', static function (): void {
 
 add_action('wp_enqueue_scripts', static function (): void {
     $theme = wp_get_theme();
+    $parent_stylesheet_path = get_template_directory() . '/style.css';
+    $child_stylesheet_path  = get_stylesheet_directory() . '/style.css';
+    $site_stylesheet_path   = get_stylesheet_directory() . '/assets/css/site.css';
+    $navigation_script_path = get_stylesheet_directory() . '/assets/js/navigation.js';
+
+    wp_enqueue_style(
+        'twentytwentyfive-style',
+        get_template_directory_uri() . '/style.css',
+        array(),
+        is_file($parent_stylesheet_path) ? (string) filemtime($parent_stylesheet_path) : $theme->get('Version')
+    );
+
+    wp_enqueue_style(
+        'stlg-style',
+        get_stylesheet_uri(),
+        array('twentytwentyfive-style'),
+        is_file($child_stylesheet_path) ? (string) filemtime($child_stylesheet_path) : $theme->get('Version')
+    );
 
     wp_enqueue_style(
         'stlg-home',
         get_stylesheet_directory_uri() . '/assets/css/site.css',
-        array(),
-        $theme->get('Version')
+        array('stlg-style'),
+        is_file($site_stylesheet_path) ? (string) filemtime($site_stylesheet_path) : $theme->get('Version')
     );
 
     wp_enqueue_script(
         'stlg-navigation',
         get_stylesheet_directory_uri() . '/assets/js/navigation.js',
         array(),
-        $theme->get('Version'),
+        is_file($navigation_script_path) ? (string) filemtime($navigation_script_path) : $theme->get('Version'),
         true
     );
 });
